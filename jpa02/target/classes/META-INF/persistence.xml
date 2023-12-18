@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+  version="2.1">
+
+  <persistence-unit name="id_generation" transaction-type="RESOURCE_LOCAL">
+
+    <properties>
+      <property name="javax.persistence.jdbc.driver" value="org.mariadb.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.user" value="jpa"/>
+      <property name="javax.persistence.jdbc.password" value="jpa1234"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/basic_jpa"/>
+
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MariaDB106Dialect"/>
+
+      <!-- 카멜(camel)표기법 필드를 자동으로 Table컬럼명 처리시 Snake표기법으로 변경하도록 설정 -->
+      <property name="hibernate.physical_naming_strategy" value="leo.spring.mvn.CustomPhysicalNamingStrategy"/>
+      
+      <!-- 애플리케이션이 실행되면서 데이터베이스에 테이블 자동 생성 -->
+      <!-- create, update, validate, create-drop, none -->
+      <property name="hibernate.hbm2ddl.auto" value="create"/>
+      <!-- 콘솔에 쿼리문 출력 -->
+      <property name="hibernate.show_sql" value="true"/>
+      <!-- 출력된 쿼리문을 보기 좋게 포맷팅 -->
+      <property name="hibernate.format_sql" value="true"/>
+
+    </properties>
+
+
+  </persistence-unit>
+
+</persistence>
